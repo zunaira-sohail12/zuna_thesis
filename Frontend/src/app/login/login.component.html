@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Account Info</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<style>
+  .footer {
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: hsl(52, 71%, 73%);
+   color: black;
+   text-align: center;
+   border-top: 3px solid #ad05ab;
+}
+</style>
+<body style="background-color: #360159;">
+
+<div class="container">
+  <!--<div class="row">
+  <div class="col-sm-3">
+    <img src="assets/img/Logo.png" style="width:250px;height: 250px;justify-content: center;display: flex;">
+  </div>
+  <div class="col-sm-9">
+    <h4 style="color:#ebdd88;">zunairalab System is one of the IT service providers having presence all over the globe. The company deals in the development and support of web, mobile, desktop, backend and server related solutions. The company has proven record of successful project implementation from scratch till deployment and after go live 24/7 support having team at client site and remote. We have prestigious customer around the globe such as fortune companies, and big multinational from every sector having strong relationship and bonding to us as they enjoy our service. These customers are from decade that we build their trust on us and this legacy will continue to goes on. </h4>
+  </div>
+  </div> -->
+  <div class="row">
+    <h1 style="color:#ebdd88;text-align: center;">Analyze fillets, chamfers and holes on 3D geometrical STEP file</h1>
+  </div>
+  <h2 style="color:#ebdd88;text-align: center;">User Details</h2>
+  
+  
+  <div class="row">
+    <div class="col-sm-6">
+  <div class="panel panel-default" style="border: 3px solid #ad05ab;background-color: #360159;padding: 10px;">  
+    <div class="form-group">
+      <label for="usr" style="color:#ebdd88;">Email:</label>
+      <input type="text" class="form-control" id="usr" placeholder="Username" #username>
+    </div>
+   <div class="form-group">
+      <label for="usr" style="color:#ebdd88;">Password:</label>
+      <input type="password" class="form-control" id="usr" placeholder="Password" #password>
+    </div>
+   
+    <br>
+    <button type="button" class="btn btn-primary" style="background-color: #ad05ab;color:#ebdd88;" (click)="loginUser(username.value,password.value)">Login</button> 
+  </div>
+  <h4 style="color:#ebdd88;">{{loginUserResp}}</h4>
+  </div>
+  <div class="col-sm-6">
+    <div class="panel panel-default" style="border: 3px solid #ad05ab;background-color: #360159;padding: 10px;">  
+        <div class="form-group">
+          <label for="usr" style="color:#ebdd88;">Email:</label>
+          <input type="text" class="form-control" id="usr" placeholder="Email" #email>
+        </div>
+       <div class="form-group">
+          <label for="usr" style="color:#ebdd88;">Username:</label>
+          <input type="text" class="form-control" id="usr" placeholder="Username" #username>
+        </div>
+        <div class="form-group">
+            <label for="usr" style="color:#ebdd88;">Password:</label>
+            <input type="password" class="form-control" id="pass" placeholder="Password" #pass>
+        </div>
+        <div class="form-group">
+            <label for="usr" style="color:#ebdd88;">Confirm Password:</label>
+            <input type="password" class="form-control" id="cpass" placeholder="Confirm Password" #cpass>
+        </div>  
+       
+        <br>
+        <button type="button" class="btn btn-primary" style="background-color: #ad05ab;color:#ebdd88;" (click)="saveUser(email.value,username.value,pass.value,cpass.value)">Create Account</button> 
+      </div>
+      <h4 style="color:#ebdd88;">{{saveUserResp}}</h4>
+  </div>
+</div>
+
+    <br>
+<!--<h4>{{createAcctResp}}</h4>
+<h4>{{createImgUploadResp}}</h4>    -->
+
+
+<!--<div class="row center-block">
+  <button type="button" class="btn btn-primary" style="background-color: #ad05ab;color:#ebdd88;width:500px;margin: 10px;" (click)="chatbot()">Continue to chatbot</button>
+</div> -->
+
+<div class="footer">
+  <h3>Design and Developed by: Zunaira Sohail</h3>
+</div>
+
+</div>
+
+</body>
+</html>

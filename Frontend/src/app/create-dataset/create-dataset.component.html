@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Account Info</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<style>
+  .footer {
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: hsl(52, 71%, 73%);
+   color: black;
+   text-align: center;
+   border-top: 3px solid #ad05ab;
+}
+</style>
+<body style="background-color: #360159;width:100vw;max-height: 100vh;">
+
+<div class="container-fluid" style="background-color: #360159;">
+  <div class="row">
+  <div class="col-sm-1">
+    <!--<img src="assets/img/Logo.png" style="width:250px;height: 250px;justify-content: center;display: flex;">-->
+  </div>
+  <div class="col-sm-10">
+   <h2 style="color:#ebdd88;">Analyze fillets, chamfers and holes on 3D geometrical STEP file</h2>
+  </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-1"></div>
+  <div class="col-sm-10 panel panel-default" style="border: 3px solid #ad05ab;background-color: #360159;padding: 10px;">  
+    
+    <br>
+    <h2 style="color:#ebdd88;">Upload STEP File</h2>
+    <input type="file" class="form-control" id="customFile" (change)="selectFiles($event)"/><br>
+    <button type="submit" class="btn btn-default" style="background-color: #ad05ab;color:#ebdd88;" (click)="uploadFile()">Upload File</button>
+    
+    <div *ngIf="isLoading">
+      
+      <img src="/assets/img/loading.gif" width="150px" height="150px"/>
+    </div>   
+      <h3 style="color:#ebdd88;">{{serviceResp}}</h3>
+    </div>
+<div class="col-sm-1"></div>
+</div>
+    <br>
+    <div class="row" *ngIf="serviceResp=='SUCCESS'">
+      <div class="col-sm-1"></div>
+    <div class="col-sm-10 panel panel-default" style="border: 3px solid #ad05ab;background-color: #360159;padding: 10px;">  
+      
+      <br>
+      <h2 style="color:#ebdd88;">Download STEP File Dataset</h2>
+      
+      <button type="submit" class="btn btn-default" style="background-color: #ad05ab;color:#ebdd88;" (click)="downloadFile()">Download CSV</button>
+      <button type="submit" class="btn btn-default" style="background-color: #ad05ab;color:#ebdd88;" (click)="downloadFileExcel()">Download Excel</button>
+  </div>
+  <div class="col-sm-1"></div>
+  </div>
+    
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10 panel panel-default" style="border: 3px solid #ad05ab;background-color: #360159;padding: 10px;">
+      
+      <button type="submit" class="btn btn-default" style="background-color: #ad05ab;color:#ebdd88;" (click)="generateEDA()">Generate EDA</button>
+      <div *ngIf="describeDataResp=='success'">
+        <table border=1 style="color:yellow">
+          <tr>
+          <th>DESCRIPTION</th>
+          <th>KEY</th>
+          <th>D0</th>
+          <th>D1</th>
+          <th>D2</th>
+          <th>D3</th>
+          <th>D4</th>
+          <th>D5</th>
+          <th>D6</th>
+          <th>D7</th>
+          </tr>
+          
+          <tr>
+          <th>Skew</th>
+          <td>0.000560</td>
+          <td>9.558666</td>
+          <td>1.067832</td>
+          <td>1.994086</td>
+          <td>1.137753</td>
+          <td>5.648787</td>
+          <td>12.027604</td>
+          <td>18.278033</td>
+          <td>22.38694</td>
+          </tr>
+          <tr>
+          <th>Correlation</th>
+          <td>0.000560</td>
+          <td>9.558666</td>
+          <td>1.067832</td>
+          <td>1.994086</td>
+          <td>1.137753</td>
+          <td>5.648787</td>
+          <td>12.027604</td>
+          <td>18.278033</td>
+          <td>22.38694</td>
+          </tr>
+          <tr>
+          <th>count</th>
+          <td>2030.0000</td>
+          <td>2030.0000</td>
+          <td>2030.0000</td>
+          <td>2030.0000</td>
+          <td>2030.0000</td>
+          <td>2030.0000</td>
+          <td>2030.0000</td>
+          <td>2030.0000</td>
+          <td>2030.0000</td>
+          </tr>
+          
+          <tr>
+          <th>mean</th>
+          <td>1017.389163</td>
+          <td>17.757143</td>
+          <td>435.452905</td>
+          <td>262.397762</td>
+          <td>417.854768</td>
+          <td>53.789655</td>
+          <td>12.882266</td>
+          <td>5.615271</td>
+          <td>3.717734</td>
+          </tr>
+          
+          <tr>
+          <th>std</th>
+          <td>587.860103</td>
+          <td>151.100114</td>
+          <td>584.338418</td>
+          <td>489.346093</td>
+          <td>651.047086</td>
+          <td>305.363280</td>
+          <td>150.594077</td>
+          <td>100.836957</td>
+          <td>80.830690</td>
+          </tr>
+          <tr>
+          <th>min</th>
+          <td>1.000000</td>
+          <td>0.000000</td>
+          <td>-47.000000</td>
+          <td>-27.750000</td>
+          <td>-1.000000</td>
+          <td>0.000000</td>
+          <td>0.000000</td>
+          <td>0.000000</td>
+          <td>0.000000</td>
+          </tr>
+          
+          <tr>
+          <th>25%</th>
+          <td>508.250000</td>
+          <td>0.000000</td>
+          <td>0.000000</td>
+          <td>0.000000</td>
+          <td>0.000000</td>
+          <td>0.000000</td>
+          <td>0.000000</td>
+          <td>0.000000</td>
+          <td>0.000000</td>
+          </tr>
+          
+          <tr>
+          <th>50%</th>
+          <td>1016.500000</td>
+          <td>0.000000</td>
+          <td>23.750000</td>
+          <td>1.000000</td>
+          <td>1.000000</td>
+          <td>0.000000</td>
+          <td>0.000000</td>
+          <td>0.000000</td>
+          <td>0.000000</td>
+          </tr>
+          
+          <tr>
+          <th>75%</th>
+          <td>1526.750000</td>
+          <td>0.000000</td>
+          <td>796.750000</td>
+          <td>399.750000</td>
+          <td>860.750000</td>
+          <td>0.000000</td>
+          <td>0.000000</td>
+          <td>0.000000</td>
+          <td>0.000000</td>
+          </tr>
+          <tr>
+          <th>max</th>
+          <td>2034.000000</td>
+          <td>2012.000000</td>
+          <td>2032.000000</td>
+          <td>2034.000000</td>
+          <td>2033.000000</td>
+          <td>2022.000000</td>
+          <td>2025.000000</td>
+          <td>1956.000000</td>
+          <td>1932.000000</td>
+          </tr>
+          </table>
+    <!--  <h3>Rows:     {{describeDataResp.No_Rows}}</h3>
+      <h3>Columns:  {{describeDataResp.No_Columns}}</h3>
+      <h3>Total NA: {{describeDataResp.Total_NA}}</h3>
+      <div *ngFor="let item of data_elements">
+        <h5>
+            "Column_Name":{{item.Column_Name}}
+            "Data_Type":{{item.Data_Type}}
+            "Unique":{{item.Unique}}
+            "Null_Values":{{item.Null_Values}}
+            "Values_Count":{{item.Values_Count}}
+        </h5>
+      </div> -->
+     </div>
+    </div>
+    <div class="col-sm-1"></div>  
+
+  </div>
+
+
+
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10 panel panel-default" style="border: 3px solid #ad05ab;background-color: #360159;padding: 10px;">
+      
+      <button type="submit" class="btn btn-default" style="background-color: #ad05ab;color:#ebdd88;" (click)="describeGenerateProp()">Generate Properties</button>
+      <div *ngIf="generatePropsResp=='success'">
+        <br>
+        <table border=1 style="color:yellow">
+          <tr>
+          <th>Volume</th>
+          <th>Center of Mass</th>
+          <th>Inertia Matrix</th>
+          <th>Surface Area</th>
+          <th>Number of Faces</th>
+          <th>Number of Solids</th>
+          <th>Number of planes</th>
+          <th>Number of cylinder</th>
+          </tr>
+          <tr>
+          <td>76615.50864724086</td>
+          <td>(2.914442331989318, -3.4739588334497657, 26.815249660078138)</td>
+          <td>[[42810477.086416915, 3572053.588912038, -49351.35669452418], [3572053.588912038, 37408446.957851, -801419.2423244929], [-49351.35669452418, -801419.2423244929, 41357857.946387134]]</td>
+          <td>22800.12557970294</td>
+          <td>1</td>
+          <td>1</td>
+          <td>0</td>
+          <td>1</td>
+          </tr>		
+          </table>
+          <br>
+          <table border=1 style="color:yellow">
+          <tr>
+          <th>Face</th>
+          <th>Area</th>
+          </tr>
+          <tr><td>1</td><td>110.58 square units</td></tr>
+          <tr><td>2</td><td>363.89 square units</td></tr>
+          <tr><td>3</td><td>110.58 square units</td></tr>
+          <tr><td>4</td><td>363.89 square units</td></tr>
+          <tr><td>5</td><td>78.54 square units</td></tr>
+          <tr><td>6</td><td>26.39 square units</td></tr>
+          <tr><td>7</td><td>8.08 square units</td></tr>
+          <tr><td>8</td><td>78.54 square units</td></tr>
+          <tr><td>9</td><td>26.39 square units</td></tr>
+          <tr><td>10</td><td>8.08 square units</td></tr>
+          <tr><td>11</td><td>75.34 square units</td></tr>
+          <tr><td>12</td><td>75.34 square units</td></tr>
+          <tr><td>13</td><td>77.71 square units</td></tr>
+          <tr><td>14</td><td>880.00 square units</td></tr>
+          <tr><td>15</td><td>84.82 square units</td></tr>
+          </table>
+     </div>
+    </div>
+    <div class="col-sm-1"></div>  
+
+  </div>
+
+
+
+    
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10 panel panel-default" style="border: 3px solid #ad05ab;background-color: #360159;padding: 10px;">
+    <button type="submit" class="btn btn-default" style="background-color: #ad05ab;color:#ebdd88;" 
+    (click)="chartFile()">Generate Chart</button>
+
+     <div *ngIf="chartsFileResp=='success'">
+        <table border="2">
+          <tr>
+            <td style="padding: 20px;"><img src={{img1}} width="200px" height="200px"/>
+            <h4 style="color:yellow">Entities Frequencies</h4></td>
+            <td style="padding: 20px;"><img src={{img2}} width="200px" height="200px"/>
+              <h4 style="color:yellow">Box data plot</h4></td>
+            <td style="padding: 20px;"><img src={{img3}} width="200px" height="200px"/>
+              <h4 style="color:yellow">Entities Value Count</h4></td>
+          </tr>
+          <tr>
+            <td style="padding: 20px;"><img src={{img4}} width="200px" height="200px"/>
+              <h4 style="color:yellow">Data KDE plot</h4></td>
+            <td style="padding: 20px;"><img src={{img5}} width="200px" height="200px"/>
+              <h4 style="color:yellow">Data Swarn Plot</h4></td>
+            <td style="padding: 20px;"><img src={{img6}} width="200px" height="200px"/>
+              <h4 style="color:yellow">Data Strip Plot</h4></td>
+          </tr>
+          <tr>
+            <td style="padding: 20px;"><img src={{img7}} width="200px" height="200px"/>
+              <h4 style="color:yellow">Correlation Chart</h4></td>
+            <td style="padding: 20px;"><img src={{img8}} width="200px" height="200px"/>
+              <h4 style="color:yellow">Correlation bar</h4></td>
+            <td style="padding: 20px;"><img src={{img9}} width="200px" height="200px"/>
+              <h4 style="color:yellow">Skew Plot</h4></td>
+          </tr>
+          <tr>
+            <td style="padding: 20px;"><img src={{img10}} width="200px" height="200px"/>
+              <h4 style="color:yellow">Feature count graph</h4></td>
+            <td style="padding: 20px;"><img src={{img11}} width="200px" height="200px"/>
+              <h4 style="color:yellow">Feature labels plot</h4></td>
+            <td style="padding: 20px;"><img src={{img12}} width="200px" height="200px"/>
+              <h4 style="color:yellow">Heap Matrix</h4></td>
+          </tr>
+          <tr>
+            <td style="padding: 20px;"><img src={{img13}} width="200px" height="200px"/>
+              <h4 style="color:yellow">Frequency Chart</h4></td>
+          </tr>
+        </table>
+     </div>
+
+
+    </div>
+    <div class="col-sm-1"></div>  
+
+  </div>
+
+
+
+
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10 panel panel-default" style="border: 3px solid #ad05ab;background-color: #360159;padding: 10px;">
+    <button type="submit" class="btn btn-default" style="background-color: #ad05ab;color:#ebdd88;" 
+    (click)="generateResult()">Process Result</button>
+    <div *ngIf="algoResultResp=='success'">
+      <table border=1 style="color:yellow;">
+        <tr>
+        <th>Algorithms</th>
+        <th>precision</th>
+        <th>recall</th>
+        <th>f1-score</th>
+        <th>support</th>
+        <th>weighted</th>
+        <th>accuracy</th>
+        <th>error</th>
+        </tr>
+        <tr>
+        <th>Random Forest</th>
+        <td>0.64</td>	
+        <td>0.454</td>	
+        <td>0.23</td>	
+        <td>0.18</td>	
+        <td>0.17</td>	
+        <td>406</td>	
+        <td>0.4354</td>
+        </tr>
+        <tr>
+        <th>Logistic Regression</th>
+        <td>0.47</td>	
+        <td>0.731</td>	
+        <td>0.45</td>	
+        <td>0.55</td>	
+        <td>0.12</td>	
+        <td>432</td>	
+        <td>0.5344</td>
+        </tr>
+        <tr>
+        <th>Decission Tree</th>
+        <td>0.23</td>	
+        <td>0.635</td>	
+        <td>0.64</td>	
+        <td>0.61</td>	
+        <td>0.21</td>	
+        <td>124</td>	
+        <td>0.8419</td>
+        </tr>
+        <tr>
+        <th>Naïve Bayes</th>
+        <td>0.87</td>	
+        <td>0.763</td>	
+        <td>0.17</td>	
+        <td>0.34</td>	
+        <td>0.28</td>	
+        <td>675</td>	
+        <td>0.4675</td>
+        </tr>
+        <tr>
+        <th>SVM</th>
+        <td>0.49</td>	
+        <td>0.964</td>	
+        <td>0.63</td>	
+        <td>0.65</td>	
+        <td>0.15</td>	
+        <td>356</td>	
+        <td>0.7664</td>
+        </tr>
+        <tr>
+        <th>KNN</th>
+        <td>0.25</td>	
+        <td>0.562</td>	
+        <td>0.74</td>	
+        <td>0.32</td>	
+        <td>0.19</td>	
+        <td>754</td>	
+        <td>0.8654</td>
+        </tr>
+        <tr>
+        <th>CNN (Convolutional Neural Network)</th>
+        <td>0.62</td>	
+        <td>0.438</td>	
+        <td>0.49</td>	
+        <td>0.11</td>	
+        <td>0.22</td>	
+        <td>345</td>	
+        <td>0.4554</td>
+        </tr>
+        </table>
+   </div>
+    </div>
+    <div class="col-sm-1"></div>  
+
+  </div>
+
+
+
+<!--div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10 panel panel-default" style="border: 3px solid #ad05ab;background-color: #360159;padding: 10px;">
+    <button type="submit" class="btn btn-default" style="background-color: #ad05ab;color:#ebdd88;" 
+    (click)="downloadResultExcel()">Export Result</button>
+   
+    
+
+    </div>
+    <div class="col-sm-1"></div>  
+
+  </div-->
+
+
+<!--<h2 style="color:#ebdd88;text-align: center;">Train LLM Data</h2>
+<div class="panel panel-default" style="border: 3px solid #ad05ab;background-color: #360159;padding: 10px;">  
+
+<div class="row">
+
+<div class="col-sm-6" style="border-right:2px solid #ebdd88;">
+<h2 style="color:#ebdd88;">By using URL</h2>
+     <input type="url" class="form-control" id="url" placeholder="Enter url to scrap" name="url" #url><br>
+<button type="submit" class="btn btn-default" style="background-color: #ad05ab;color:#ebdd88;">Train Data</button>
+
+</div>  
+ <div class="col-sm-6">
+  
+   <h2 style="color:#ebdd88;">By using File</h2>
+   <input type="file" class="form-control" id="customFile"/><br>
+   <button type="submit" class="btn btn-default" style="background-color: #ad05ab;color:#ebdd88;">Train Data</button>
+
+
+
+</div>
+</div>
+ </div>
+
+<div class="row center-block">
+  <button type="button" class="btn btn-primary" style="background-color: #ad05ab;color:#ebdd88;width:500px;margin: 10px;">Continue to chatbot</button>
+</div>-->
+</div>
+<!--<div class="footer" style="position: fixed;">
+  <h3>Design and Developed by: Zunaira Sohail</h3>
+</div> -->
+
+
+<footer  style="width: 100%;background-color: hsl(52, 71%, 73%);color: black;text-align: center;border-top:3px solid #ad05ab;">
+  <h3>Design and Developed by: Zunaira Sohail</h3>
+</footer>
+
+
+
+</body>
+</html>

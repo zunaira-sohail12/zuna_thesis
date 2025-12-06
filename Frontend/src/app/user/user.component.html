@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Account Info</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<style>
+  .footer {
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: hsl(52, 71%, 73%);
+   color: black;
+   text-align: center;
+   border-top: 3px solid #ad05ab;
+}
+</style>
+<body style="background-color: #360159;">
+
+<div class="container">
+  <div class="row">
+  <div class="col-sm-3">
+    <img src="assets/img/Logo.png" style="width:250px;height: 250px;justify-content: center;display: flex;">
+  </div>
+  <div class="col-sm-9">
+    <h4 style="color:#ebdd88;">zunairalab System is one of the IT service providers having presence all over the globe. The company deals in the development and support of web, mobile, desktop, backend and server related solutions. The company has proven record of successful project implementation from scratch till deployment and after go live 24/7 support having team at client site and remote. We have prestigious customer around the globe such as fortune companies, and big multinational from every sector having strong relationship and bonding to us as they enjoy our service. These customers are from decade that we build their trust on us and this legacy will continue to goes on. </h4>
+  </div>
+  </div>
+  <h2 style="color:#ebdd88;text-align: center;">User Details</h2>
+  <div class="panel panel-default" style="border: 3px solid #ad05ab;background-color: #360159;padding: 10px;">  
+    <div class="form-group">
+      <label for="usr" style="color:#ebdd88;">Email:</label>
+      <input type="text" class="form-control" id="usr" placeholder="Email" #email>
+    </div>
+   <div class="form-group">
+      <label for="usr" style="color:#ebdd88;">Username:</label>
+      <input type="text" class="form-control" id="usr" placeholder="Username" #username>
+    </div>
+   
+    <br>
+    <button type="button" class="btn btn-primary" style="background-color: #ad05ab;color:#ebdd88;" (click)="saveAcccount(email.value,username.value)">Create Account</button> 
+</div>
+    <br>
+<h4>{{createAcctResp}}</h4>
+<h4>{{createImgUploadResp}}</h4>    
+
+    
+<h2 style="color:#ebdd88;text-align: center;">Train LLM Data</h2>
+<div class="panel panel-default" style="border: 3px solid #ad05ab;background-color: #360159;padding: 10px;">  
+
+<div class="row">
+
+<div class="col-sm-6" style="border-right:2px solid #ebdd88;">
+<h2 style="color:#ebdd88;">By using URL</h2>
+     <input type="url" class="form-control" id="url" placeholder="Enter url to scrap" name="url" #url><br>
+<button type="submit" class="btn btn-default" style="background-color: #ad05ab;color:#ebdd88;" (click)="createURLTrain(url.value)">Train Data</button>
+<h2>{{createURLTrainResp}}</h2>
+
+</div>  
+ <div class="col-sm-6">
+  
+   <h2 style="color:#ebdd88;">By using File</h2>
+   <input type="file" class="form-control" id="customFile" (change)="selectTrainFiles($event)"/><br>
+   <button type="submit" class="btn btn-default" style="background-color: #ad05ab;color:#ebdd88;" (click)="createPDFTrain()">Train Data</button>
+
+ <h2>{{createPDFTrainResp}}</h2> 
+
+</div>
+</div>
+ </div>
+
+<div class="row center-block">
+  <button type="button" class="btn btn-primary" style="background-color: #ad05ab;color:#ebdd88;width:500px;margin: 10px;" (click)="chatbot()">Continue to chatbot</button>
+</div>
+
+<div class="footer">
+  <h3>Design and Developed by: Zunaira Sohail</h3>
+</div>
+
+</div>
+
+</body>
+</html>

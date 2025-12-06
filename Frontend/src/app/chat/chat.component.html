@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+      .scrollable-div {
+  height: 200px; /* set a fixed height for the div */
+  overflow-y: scroll; /* enable vertical scrollbar */
+}
+
+        .input-wrapper { 
+            position: relative; 
+            display: inline-block; 
+            width: 100%;
+            border: 3px solid #ad05ab;
+            border-radius: 10px;
+        } 
+  
+        .input-wrapper textarea { 
+            padding-right: 40px; 
+
+        } 
+  
+        .input-wrapper button { 
+            position: absolute; 
+            top: 0; 
+            right: 0; 
+            border: none; 
+            background-color: transparent; 
+            cursor: pointer; 
+        } 
+        .footer {
+          position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #ebdd88;
+   color: black;
+   text-align: center;
+   border-top: 3px solid #ad05ab;
+}
+  </style>
+  <script>
+    var dt = new Date();
+    document.getElementById("datetime").innerHTML = dt.toLocaleString();
+    </script>
+
+</head>
+<body style="background-color: #360159;">
+
+  <div class="container-fluid">
+    
+    <div class="row" >
+      <div class="col-sm-3" style="background-color:#ebdd88;height:100vh;border-right:6px solid #ad05ab;">
+       <img src="assets/img/Logo.png" width="100%" height="150px"/>
+       <div *ngFor="let b of ques">
+        <!--<li>-->
+          <div style="width:100%;height:35px;background-color: #360159;color:#ebdd88;font-style: bold;border:2px solid #ad05ab;border-radius: 8px;margin: 5px;padding:10px;">{{b}}</div>
+        <!--</li>
+      </ul> --> 
+      </div>
+      </div>
+      <div class="col-sm-9">
+        <div class="row">
+          <h1 style="color: #ebdd88;text-align: center;font-family: fantasy;">zunairalabs Chatbot based recommender system</h1>
+          <h3 style="color: #ebdd88;text-align: center;font-family: monospace;">Ask anything you want based on traning LLM data</h3>
+      <!--<textarea class="form-control" rows="20" id="comment" value="{{chat}}" placeholder="Chatbot answer..." #response></textarea>-->
+      <div class="scrollable-div" style="background-color: white;margin: 15px;border:4px solid #ad05ab;border-radius: 16px;height: 300px;">
+      <ul *ngFor="let a of chat;index as i" style="list-style: none;">
+        <li *ngIf="i%2==0;else other_content" style="border-bottom: 2px solid grey;background-color: gainsboro;"><img src="assets/img/user.png" style="border-radius:50%;width:30px;height:30px;margin:10px;">Zunaira_Sohail:
+          <br><span style="font-size: 7px;color: black;font-family: monospace;">{{currentDate | date : "YYYY-MM-dd hh:mm:ss.SSS"}}</span>
+          <h6>What is train LLM Model ?</h6>  
+        </li>
+          <ng-template #other_content>  
+           <li dir="auto" style="border-bottom: 2px solid grey;"><img src="assets/img/bot.png" style="border-radius:50%;width:30px;height:30px;">Bot: 
+            <br><span style="font-size: 7px;color: black;font-family: monospace;">{{currentDate | date : "YYYY-MM-dd hh:mm:ss.SSS"}}</span>
+           <h6>I couldn't find specific information about training an LLM model in the provided pages. However, training an LLM (Large Language Model) typically involves feeding a large amount of text data into the model to learn the patterns and relationships within the language. This process helps the model generate coherent and contextually relevant text. If you have any specific questions or need further assistance, feel free to ask!</h6> 
+          </li></ng-template>
+          </ul>
+         </div>
+        </div>
+        <div class="row" style="height:100vh;">
+          <!--<div class="col-sm-10">
+            <label for="comment" style="color: #ebdd88;">Ask any questions you want to ask:</label>
+            <textarea class="form-control" rows="2" id="comment" placeholder="Type any questions to ask..." #questions [value]="questt"></textarea>
+          </div> -->
+          <div class="col-sm-12">
+            <!--<button type="button" class="btn btn-primary btn-lg" (click)="sendMessage(questions.value)">Go</button>-->
+         <!--   <div class="input-wrapper"> 
+              <input type="text" placeholder="Search..."> 
+              <button> 
+                  <img src="assets/img/search-icon.jpg" style="width:25px;height: 25px;">
+              </button> 
+          </div>  -->
+          <div class="input-wrapper"> 
+            <textarea class="form-control" rows="2" id="comment" placeholder="Type any questions to ask..." #questions [value]="questt"></textarea>
+            <button (click)="sendingMsg(questions.value)"> 
+              <img src="assets/img/search-icon.jpg" style="width:40px;height: 40px;">
+          </button> 
+          </div>
+        </div>
+      </div>
+
+
+      <div class="footer">
+        <h3>Design and Developed by: Zunaira Sohail</h3>
+      </div>
+
+
+    </div>
+  </div>
+      </div>
+ 
+  </body>
+</html>

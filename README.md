@@ -72,7 +72,7 @@ or any academic / open-source license you choose. Including a license helps othe
 * jupyter notebook# or open the relevant .ipynb file in /colab code/ 
 * pip install -r requirements.txt
 * python3 -m venv env source env/bin/activate  # On Windows: env\Scripts\activate 
-* git clone https://github.com/zunaira-sohail12/zuna_thesis.gitcd 
+* git clone https://github.com/zunaira-sohail12/zuna_thesis.git
 
 Citing this work
 - If you use this repository for research or in a paper, please cite:

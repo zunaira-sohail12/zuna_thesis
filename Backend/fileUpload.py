@@ -20,7 +20,7 @@ app = Flask(__name__)
 cors = CORS(app)
 
 #UPLOAD_FOLDER = 'D:\\Thesis\\Project\\Backend';
-UPLOAD_FOLDER = '/Users/zunaira/Documents/livecode_thesis/stepfiles';
+UPLOAD_FOLDER = '/Users/zunaira/Documents/livecode_thesis/Files';
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 ALLOWED_EXTENSIONS = {'STP','stp','STEP','step'}
 
